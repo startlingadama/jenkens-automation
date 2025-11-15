@@ -1,0 +1,30 @@
+pipeline {
+    agent { label 'test-agent' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run tests') {
+            steps {
+                sh 'pytest --maxfail=1'
+            }
+        }
+
+        stage('Coverage') {
+            steps {
+                sh 'coverage run -m pytest'
+                sh 'coverage report'
+            }
+        }
+    }
+}
