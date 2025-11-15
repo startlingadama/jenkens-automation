@@ -10,20 +10,20 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'venv/bin/pip install -r requirements.txt'
             }
         }
 
         stage('Run tests') {
             steps {
-                sh 'pytest --maxfail=1'
+                sh 'venv/bin/pytest --maxfail=1'
             }
         }
 
         stage('Coverage') {
             steps {
-                sh 'coverage run -m pytest'
-                sh 'coverage report'
+                sh 'venv/bin/coverage run -m pytest'
+                sh 'venv/bin/coverage report'
             }
         }
     }
