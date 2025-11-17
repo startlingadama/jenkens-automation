@@ -3,4 +3,4 @@ From this repository you can find all the necessary files to automate Jenkins se
 
 ### What we do:
 
-- Jenkins to build image
+- Jenkins to build image(Dockerfile)
