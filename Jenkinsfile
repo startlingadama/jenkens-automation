@@ -2,21 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Hello') {
             steps {
-                git url: 'https://github.com/startlingadama/jenkens-automation.git', branch: 'main'
+                echo 'Hello depuis un pipeline déclaratif'
             }
         }
-
-        stage('Build Docker image') {
+        stage('Infos environnement') {
             steps {
-                sh 'docker build -t python-app .'
-            }
-        }
-
-        stage('Run image') {
-            steps {
-                sh 'docker run --rm python-app'
+                echo "Nom du noeud Jenkins: ${env.NODE_NAME}"
+                echo "Workspace: ${env.WORKSPACE}"
             }
         }
     }
